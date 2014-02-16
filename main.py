@@ -19,12 +19,20 @@ class Crawler(object):
 
     people_you_may_know = []
 
-    def create_opener(self):
+    root_id = 319955720
+    jar = cookiejar.MozillaCookieJar(cookie_filename)
+    opener = None
+    _cookies_loaded = False
+
+    @staticmethod
+    def _create_opener():
+        if Crawler.opener is not None:
+            return Crawler.opener
 
         password_manager = request.HTTPPasswordMgrWithDefaultRealm()
-        password_manager.add_password(None, "https://www.linkedin.com/", self.username, self.password)
+        password_manager.add_password(None, "https://www.linkedin.com/", Crawler.username, Crawler.password)
 
-        opener = request.build_opener(request.HTTPCookieProcessor(self.jar),
+        opener = request.build_opener(request.HTTPCookieProcessor(Crawler.jar),
                                       request.HTTPRedirectHandler(),
                                       request.HTTPHandler(debuglevel=0),
                                       request.HTTPSHandler(debuglevel=0),
@@ -38,54 +46,70 @@ class Crawler(object):
         request.install_opener(opener)
         return opener
 
+    @staticmethod
+    def _load_cookies():
+        if Crawler._cookies_loaded:
+            return True
 
-    def _load_cookies(self):
-        if os.access(self.cookie_filename, os.F_OK):
-            self.jar.load(self.cookie_filename)
+        if os.access(Crawler.cookie_filename, os.F_OK):
+            Crawler.jar.load(Crawler.cookie_filename)
+            Crawler._cookies_loaded = True
             return True
         return False
 
 
     def real_init(self):
+
+        self._load_cookies()
+        self._login()
+
+
         self.profiles = None
         self.soup = None                                        # Beautiful Soup object
         self.current_page = "https://www.linkedin.com/"          # Current page's address
         self.links = set()                             # Queue with every links fetched
         self.visited_links = set()
-
+        self._people_you_may_know_ids = []
+        self._people_you_may_know_urls = []
         self.counter = 0  # Simple counter for debug purpose
 
-        self._load_cookies()
 
-        res = self._login()
 
-        if res is None:
-            res = request.urlopen('http://www.linkedin.com/nhome/')
 
+        #res = self._login()
+        #if res is None:
+        #    res = request.urlopen('http://www.linkedin.com/nhome/')
+
+        res = request.urlopen('http://www.linkedin.com/profile/view?id={}'.format(Crawler.root_id))
         html = res.read()
+        soup = BeautifulSoup(html)
 
-        self.soup = BeautifulSoup(html)
+        profile_v2_guided_edit_promo = soup.find_all('code', attrs={'id':'profile_v2_guided_edit_promo-content'})[0]
+        assert len(profile_v2_guided_edit_promo.contents) == 1
+        profile_v2_guided_edit_promo = profile_v2_guided_edit_promo.contents[0].replace(r'\u002d', '-')
+        profile_v2_guided_edit_promo = json.loads(profile_v2_guided_edit_promo)
+
+        profiles = profile_v2_guided_edit_promo['content']['Discovery']['discovery']['people']
+        for i in range(0, len(profiles)):
+            profile = Profile(url = profiles[i]['link_profile'], profile_id=profiles[i]['memberID'])
+            self._people_you_may_know_ids.append(profile.url)
+            self._people_you_may_know_urls.append(profile.profile_id)
+            self.people_you_may_know.append(profile)
+
 
         #profiles = self.soup.select('.profile-summary')
 
         #urls = [x.find('a')['href'] for x in profiles]
-        #names = [x.find('a').contents[0].strip() for x in profiles]
-        #profile_ids = [parse_qs(urlparse(x).query)['id'] for x in urls]
+
 
         #for i in range(0, len(profiles)):
         #    url = urls[i]
-
-            #profile = Profile(url)
-            #self.people_you_may_know.append(profile)
+        #profile = Profile(url)
+        #    self.people_you_may_know.append(member_id, profile)
 
     def __init__(self):
-        self.jar = cookiejar.MozillaCookieJar(self.cookie_filename)
-
-        self.create_opener()
-
-
-
-
+        self._create_opener()
+        self._load_cookies()
 
 
 
@@ -121,6 +145,7 @@ class Crawler(object):
         if self._is_logged_in():
             return
 
+
         login_data = parse.urlencode({
             'session_key': self.username,
             'session_password': self.password,
@@ -145,19 +170,6 @@ class Crawler(object):
         return response
 
     def run(self):
-
-        #print "Currently have %d cookies" % len(self.jar)
-        #print "Getting page"
-
-        # Crawl 3 webpages (or stop if all url has been fetched)
-        #while len(self.visited_links) < 3 or (self.visited_links == self.links):
-        #    self.open()
-
-        #for link in self.links:
-        #    print link
-
-        #print "Currently have %d cookies" % len(self.jar)
-        #print self.jar
 
         for i in range(0, 2):
             self.people_you_may_know[i].harvest_profile()
@@ -196,44 +208,23 @@ class Profile(object):
     #
     #is_stub = True
 
-    def __init__(self, url):
+    def real_init(self, url):
 
-        if self.is_absolute_url(url):
-            self.url = url
-        else:
-            self.url = self.get_absolute_url(url)
 
         print('started creation of ' + self.url)
 
-        #self.profile_id = kwargs.pop('profile_id', 0)
-        #self.thumb_src = kwargs.pop('thumb_src', '')
-        #self.image_src = kwargs.pop('image_src', '')
-        #self.name = kwargs.pop('name', '')
-        #self.html = kwargs.pop('html', '')
-        #self.people_also_viewed = kwargs.pop('people_also_viewed', [])
-
-
-        #if self.profile_id != 0: #necessary?
-        #    return
-
         res = request.urlopen(self.url)
-        self.html = res.read()
+        html = res.read()
 
-        soup = BeautifulSoup(self.html)
+        soup = BeautifulSoup(html)
 
 
         jsons = soup.find_all('code')
 
         if len(jsons) == 2:
-            self.json_profile_v1_str = jsons[0].contents[0]
-            self.json_profile_v2_str = jsons[1].contents[0]
-
-            self.json_profile_v1 = json.loads(self.json_profile_v1_str.replace(r'\u002d', '-'))
-            self.json_profile_v2 = json.loads(self.json_profile_v2_str.replace(r'\u002d', '-'))
 
             try:
-                self.first_name = self.json_profile_v2['content']['Discovery']['discovery']['viewee']['firstName']
-                self.last_name = self.json_profile_v2['content']['Discovery']['discovery']['viewee']['lastName']
+                pass
             except TypeError as e:
                 print('\t no first name and last name for {}'.format(self.url))
 
@@ -241,8 +232,6 @@ class Profile(object):
                 self.picture_src = self.json_profile_v2['content']['in_common']['viewee']['pictureID']
             except KeyError as e:
                 print('\t no photo for {}'.format(self.url))
-
-
 #started creation of http://www.linkedin.com/profile/view?id=128013505&authType=name&authToken=6gNW
 #Traceback (most recent call last):
 #  File "<console>", line 1, in <module>
@@ -264,8 +253,7 @@ class Profile(object):
             self.json_profile_v3 = json.loads(self.json_profile_v3_str.replace(r'\u002d', '-'))
 
 
-            self.first_name = self.json_profile_v3['content']['Discovery']['discovery']['viewee']['firstName']
-            self.last_name = self.json_profile_v3['content']['Discovery']['discovery']['viewee']['lastName']
+
 
             try:
                 self.picture_src = self.json_profile_v3['content']['in_common']['viewee']['pictureID']
@@ -276,8 +264,7 @@ class Profile(object):
             self.json_profile_v1 = json.loads(self.json_profile_v1_str.replace(r'\u002d', '-'))
 
             try:
-                self.first_name = self.json_profile_v1['content']['Discovery']['discovery']['viewee']['firstName']
-                self.last_name = self.json_profile_v1['content']['Discovery']['discovery']['viewee']['lastName']
+                pass
             except TypeError as e:
                 print('\t no first name and last name for {}'.format(self.url))
 
@@ -312,50 +299,83 @@ class Profile(object):
 
         self.is_stub = False
 
-    def _get_shit_from_html(self, soup):
-
-        pass
 
 
+    def __init__(self, url='', profile_id=0, thumb_src='', image_src='', name='', people_also_viewed=[]):
+        self.url = url
+        self.profile_id = profile_id
+        self.thumb_src = thumb_src
+        self.image_src = image_src
+        self.name = name
+        self.people_also_viewed = people_also_viewed
 
-
-
-    def harvest_profile(self):
-
-        print('starting to harvest {0}s profile'.format(self.name))
-
-        #soup = BeautifulSoup(self.html)
-        #profiles = soup.select('.with-photo > a')
-
-
-        if self.json_profile_v3_str != '':
-            profiles = self.json_profile_v3['content']['browse_map']['results']
+        if self.is_absolute_url(url):
+            self.url = url
         else:
-            profiles = self.json_profile_v2['content']['browse_map']['results']
+            self.url = self.get_absolute_url(url)
 
-        assert len(profiles) == 10
+        if self.profile_id == 0:
+          self.profile_id = int(parse_qs(urlparse(self.url).query)['id'][0])
+
+        self.population_database[self.profile_id] = self.url
+
+    def _get_shit_from_html(self):
+
+        res = request.urlopen(self.url)
+        html = res.read()
+
+        self._soup = BeautifulSoup(html)
+
+
+
+        self.v2_json = self._load_linked_in_json('profile_v2_background')
+
+        if self.v2_json is not None:
+            self.first_name = self.v2_json['content']['Discovery']['discovery']['viewee']['firstName']
+            self.last_name = self.v2_json['content']['Discovery']['discovery']['viewee']['lastName']
+            no_photo = True
+            if no_photo:
+                self.picture_src = self.v2_json['content']['in_common']['vieweePhoto']['ghost']
+            else:
+                pass
+            self._load_people_also_viewed()
+
+
+
+        self.top_card = self._load_linked_in_json('top_card')
+
+
+
+
+
+        #profiles = profile_v2_background['content']['Discovery']['discovery']['people']
+        #for i in range(0, len(profiles)):
+        #    profile = Profile(url = profiles['link_profile'], profile_id= profiles['memberID'])
+        #    self._people_you_may_know_ids.add(profile.url)
+        #    self._people_you_may_know_urls.add(profile.profile_id)
+
+    def _load_linked_in_json(self, name):
+        the_load = self._soup.find_all('code', attrs={'id':'{}-content'.format(name)})[0]
+        assert len(the_load.contents) == 1
+        the_load = the_load.contents[0].replace(r'\u002d', '-')
+        return json.loads(the_load)
+
+
+    def _load_people_also_viewed(self):
+        profiles = self.v2_json['content']['browse_map']['results']
 
         names = [x['fullname'] for x in profiles]
         urls = [x['pview'] for x in profiles]
         profile_ids = [x['memberID'] for x in profiles]
 
-        #names = [x.find('img')['alt'] for x in profiles]
-        #urls = [x['href'] for x in profiles]
-        #profile_ids = [parse_qs(urlparse(x.query))['id'][0] for x in urls]
-
         for i in range(0, len(profiles)):
             print('from ' + self.name)
-            name = names[i]
-            print('\t' + name)
-            url = urls[i]
-            print('\t' + url)
+            print('\t' + names[i])
+            print('\t' + urls[i])
             profile_id = profile_ids[i]
             print('\t {}'.format(profile_id))
-            print('\t {0} harvested from {1}s profile'.format(name, self.name))
-
-            self.people_also_viewed.append(Profile(url))
-
-        print('finished harvesting {0}s profile'.format(self.name))
+            print('\t {0} harvested from {1}s profile'.format(names[i], self.name))
+            self.people_also_viewed.append(Profile(url=urls[i]))
 
 
     def dump_html(self):
@@ -381,13 +401,7 @@ class Profile(object):
     def is_absolute_url(url):
         return bool(urlparse(url).scheme)
 
-    #def __init__(self, link='', profile_id=0, thumb_src='', image_src='', name='', people_also_viewed=[]):
-    #    self.link = link
-    #    self.profile_id = profile_id
-    #    self.thumb_src = thumb_src
-    #    self.image_src = image_src
-    #    self.name = name
-    #    self.people_also_viewed = people_also_viewed
+
 
 
 if __name__ == '__main__':
