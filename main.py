@@ -389,6 +389,9 @@ class Profile(object):
         #        os.makedirs(dir)
 
 
+
+
+
     @staticmethod
     def get_absolute_url(url):
         return 'https://www.linkedin.com' + url
