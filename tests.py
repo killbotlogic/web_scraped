@@ -24,7 +24,7 @@ class TestShitWorks(unittest.TestCase):
         self.assertFalse(c._is_logged_in())
         c._login()
         self.assertTrue(c._is_logged_in())
-
+#"wtf"
     def test_still_logged_in(self):
 
         c = Crawler()
