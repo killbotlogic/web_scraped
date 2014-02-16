@@ -409,7 +409,3 @@ if __name__ == '__main__':
     c = Crawler()
     c.run()
 
-
-def test_shit():
-
-    pass
