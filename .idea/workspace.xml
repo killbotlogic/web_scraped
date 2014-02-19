@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04598644-61a0-4b28-b4ec-0c64be34fd9c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/web_scraper.iml" afterPath="$PROJECT_DIR$/.idea/web_scraper.iml" />
+    <list default="true" id="04598644-61a0-4b28-b4ec-0c64be34fd9c" name="Default" comment="yo">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json files/no friends top card.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json files/no name in v2 2.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json files/no name in v2 top card instead try.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json files/no name in v2.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json files/only top card content.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/json files/p2_message_exchanged.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests.py" afterPath="$PROJECT_DIR$/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\dump.json" afterPath="$PROJECT_DIR$/json files/dump.json" />
     </list>
     <ignored path="web_scraper.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,12 +24,17 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_get_people_i_may_know.coverage" NAME="Unittest TestShitWorks.test_get_people_i_may_know Coverage Results" MODIFIED="1392547533047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/web_scraper$Unittests_in_TestShitWorks.coverage" NAME="Unittests in TestShitWorks Coverage Results" MODIFIED="1392552039185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_crawler_people_known_urls.coverage" NAME="Unittest TestShitWorks.test_crawler_people_known_urls Coverage Results" MODIFIED="1392719575669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_harvesting.coverage" NAME="Unittest TestShitWorks.test_harvesting Coverage Results" MODIFIED="1392804076025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_dump_stuff.coverage" NAME="Unittest TestShitWorks.test_dump_stuff Coverage Results" MODIFIED="1392800566709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_still_logged_in.coverage" NAME="Unittest TestShitWorks.test_still_logged_in Coverage Results" MODIFIED="1392543439534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_login.coverage" NAME="Unittest TestShitWorks.test_login Coverage Results" MODIFIED="1392553611919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_profile_url_is_a_goddamn_url.coverage" NAME="Unittest TestShitWorks.test_profile_url_is_a_goddamn_url Coverage Results" MODIFIED="1392719508485" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/web_scraper$main.coverage" NAME="main Coverage Results" MODIFIED="1392200043178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_people_also_viewed.coverage" NAME="Unittest TestShitWorks.test_people_also_viewed Coverage Results" MODIFIED="1392553967967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_people_also_viewed.coverage" NAME="Unittest TestShitWorks.test_people_also_viewed Coverage Results" MODIFIED="1392789108667" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/web_scraper$Unittests_in_TestShitWorks.coverage" NAME="Unittests in TestShitWorks Coverage Results" MODIFIED="1392790216504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_login.coverage" NAME="Unittest TestShitWorks.test_login Coverage Results" MODIFIED="1392553611919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/web_scraper$Unittests_in_tests.coverage" NAME="Unittests in tests Coverage Results" MODIFIED="1392553628558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_profile_with_no_people_also_viewed.coverage" NAME="Unittest TestShitWorks.test_profile_with_no_people_also_viewed Coverage Results" MODIFIED="1392804763265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/web_scraper$Unittest_TestShitWorks_test_init_profile_from_url.coverage" NAME="Unittest TestShitWorks.test_init_profile_from_url Coverage Results" MODIFIED="1392548715903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -38,16 +52,16 @@
       <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="396" column="47" selection-start="13470" selection-end="13470" vertical-scroll-proportion="0.0" vertical-offset="3693" max-vertical-offset="7140">
+            <state line="407" column="18" selection-start="13763" selection-end="13763" vertical-scroll-proportion="0.0" vertical-offset="6919" max-vertical-offset="7922">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dump.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dump.json">
+      <file leaf-file-name="no name in v2 2.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/json files/no name in v2 2.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1483" column="33" selection-start="76777" selection-end="76789" vertical-scroll-proportion="0.0" vertical-offset="24997" max-vertical-offset="27642">
+            <state line="393" column="12" selection-start="16155" selection-end="16155" vertical-scroll-proportion="0.0" vertical-offset="6498" max-vertical-offset="8602">
               <folding />
             </state>
           </provider>
@@ -56,10 +70,28 @@
       <file leaf-file-name="tests.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="35" selection-start="609" selection-end="609" vertical-scroll-proportion="0.6788194" vertical-offset="68" max-vertical-offset="1003">
+            <state line="74" column="22" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.65675056" vertical-offset="684" max-vertical-offset="1581">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="no name in v2 top card instead try.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/json files/no name in v2 top card instead try.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="410" column="15" selection-start="21290" selection-end="21290" vertical-scroll-proportion="0.0" vertical-offset="6509" max-vertical-offset="7140">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="no friends top card.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/json files/no friends top card.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="217" column="29" selection-start="7717" selection-end="7721" vertical-scroll-proportion="0.0" vertical-offset="3513" max-vertical-offset="19346">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,6 +127,13 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/dump.json" />
+        <option value="$PROJECT_DIR$/some.other.dump.json" />
+        <option value="$PROJECT_DIR$/p2_message_exchanged.json" />
+        <option value="$PROJECT_DIR$/json files/no name in v2.json" />
+        <option value="$PROJECT_DIR$/json files/no name.json" />
+        <option value="$PROJECT_DIR$/json files/no name in v2 top card instead try.json" />
+        <option value="$PROJECT_DIR$/json files/269093150.json" />
+        <option value="$PROJECT_DIR$/json files/no friends top card.json" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/tests.py" />
       </list>
@@ -171,20 +210,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web_scraper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web_scraper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="json files" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="292" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="292" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="293" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -194,23 +242,18 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="967" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="293" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="291" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
     <property name="FullScreen" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="options.lastSelected" value="vcs.Git" />
+    <property name="restartRequiresConfirmation" value="true" />
     <property name="options.searchVisible" value="true" />
-  </component>
-  <component name="PublishConfig" serverName="https://github.com/killbotlogic/web_scraper.git" serverId="92ca4b45-7bc0-4dcd-a789-103cb61f827f">
-    <servers>
-      <server id="92ca4b45-7bc0-4dcd-a789-103cb61f827f">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </server>
-    </servers>
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -221,81 +264,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Users\Andrew\PycharmProjects\web_scraper\json files" />
       <recent name="E:\Users\Andrew\PycharmProjects\web_scraper" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest TestShitWorks.test_people_also_viewed">
-    <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="web_scraper" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestShitWorks.test_still_logged_in" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="web_scraper" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
-      <option name="CLASS_NAME" value="TestShitWorks" />
-      <option name="METHOD_NAME" value="test_still_logged_in" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestShitWorks.test_init_profile_from_url" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="web_scraper" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
-      <option name="CLASS_NAME" value="TestShitWorks" />
-      <option name="METHOD_NAME" value="test_init_profile_from_url" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python tests.Unittest TestShitWorks.test_profile_with_no_people_also_viewed">
     <configuration default="false" name="Unittests in TestShitWorks" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -317,7 +290,117 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestShitWorks.test_people_also_viewed" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="web_scraper" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
+      <option name="CLASS_NAME" value="TestShitWorks" />
+      <option name="METHOD_NAME" value="test_people_also_viewed" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestShitWorks.test_harvesting" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="web_scraper" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
+      <option name="CLASS_NAME" value="TestShitWorks" />
+      <option name="METHOD_NAME" value="test_harvesting" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestShitWorks.test_dump_stuff" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="web_scraper" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
+      <option name="CLASS_NAME" value="TestShitWorks" />
+      <option name="METHOD_NAME" value="test_dump_stuff" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestShitWorks.test_profile_with_no_people_also_viewed" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="web_scraper" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
+      <option name="CLASS_NAME" value="TestShitWorks" />
+      <option name="METHOD_NAME" value="test_profile_with_no_people_also_viewed" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -405,9 +488,6 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
-      <method />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -429,6 +509,9 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -471,122 +554,20 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests in tests" type="tests" factoryName="Unittests" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="web_scraper" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestShitWorks.test_login" type="tests" factoryName="Unittests" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="web_scraper" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
-      <option name="CLASS_NAME" value="TestShitWorks" />
-      <option name="METHOD_NAME" value="test_login" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestShitWorks.test_get_people_i_may_know" type="tests" factoryName="Unittests" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="web_scraper" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
-      <option name="CLASS_NAME" value="TestShitWorks" />
-      <option name="METHOD_NAME" value="test_get_people_i_may_know" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TestShitWorks.test_people_also_viewed" type="tests" factoryName="Unittests" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="web_scraper" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests.py" />
-      <option name="CLASS_NAME" value="TestShitWorks" />
-      <option name="METHOD_NAME" value="test_people_also_viewed" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <list size="8">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_login" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_get_people_i_may_know" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_people_also_viewed" />
-      <item index="4" class="java.lang.String" itemvalue="Python.main" />
-      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_still_logged_in" />
-      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_init_profile_from_url" />
-      <item index="7" class="java.lang.String" itemvalue="Python tests.Unittests in TestShitWorks" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestShitWorks" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_people_also_viewed" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_harvesting" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_dump_stuff" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_profile_with_no_people_also_viewed" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in TestShitWorks" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_init_profile_from_url" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_still_logged_in" />
-        <item index="3" class="java.lang.String" itemvalue="Python.main" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_profile_with_no_people_also_viewed" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_harvesting" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_dump_stuff" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestShitWorks" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestShitWorks.test_people_also_viewed" />
       </list>
     </recent_temporary>
   </component>
@@ -672,17 +653,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20489977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1755603" sideWeight="0.6703786" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2860192" sideWeight="0.65478843" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3452116" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31069043" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31069043" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -707,60 +688,17 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>192</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="28" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python33/Lib/urllib/request.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="0" selection-start="5579" selection-end="5579" vertical-scroll-proportion="0.0" vertical-offset="2635" max-vertical-offset="44319" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="240" column="34" selection-start="8155" selection-end="8155" vertical-scroll-proportion="0.0" vertical-offset="4080" max-vertical-offset="5151">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="8" selection-start="8489" selection-end="8657" vertical-scroll-proportion="0.0" vertical-offset="4316" max-vertical-offset="5151">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="41" selection-start="2479" selection-end="2479" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="4692">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="0" selection-start="3920" selection-end="3920" vertical-scroll-proportion="0.0" vertical-offset="1788" max-vertical-offset="3264">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="20" selection-start="1592" selection-end="1592" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="3179">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/urllib2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="409" column="0" selection-start="13466" selection-end="13466" vertical-scroll-proportion="0.33212996" vertical-offset="6548" max-vertical-offset="24871" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python33/Lib/_weakrefset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="2158" selection-end="2158" vertical-scroll-proportion="0.0" vertical-offset="1087" max-vertical-offset="3434" />
-      </provider>
-    </entry>
     <entry file="file://C:/Python33/Lib/abc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="185" column="0" selection-start="6269" selection-end="6269" vertical-scroll-proportion="0.0" vertical-offset="2974" max-vertical-offset="3978" />
@@ -776,33 +714,83 @@
         <state line="36" column="0" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.8011696" vertical-offset="201" max-vertical-offset="714" />
       </provider>
     </entry>
-    <entry file="file://C:/Python33/Lib/urllib/request.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="0" selection-start="5579" selection-end="5579" vertical-scroll-proportion="-0.6593592" vertical-offset="2635" max-vertical-offset="43928" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1483" column="33" selection-start="76777" selection-end="76789" vertical-scroll-proportion="0.0" vertical-offset="24997" max-vertical-offset="27642">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python33/Lib/urllib/parse.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="291" column="0" selection-start="9921" selection-end="9921" vertical-scroll-proportion="0.3322091" vertical-offset="4716" max-vertical-offset="16677" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/json files/only top card content.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="313" column="20" selection-start="13663" selection-end="13668" vertical-scroll-proportion="0.39198217" vertical-offset="5145" max-vertical-offset="21369">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json files/dump.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="35" selection-start="231" selection-end="236" vertical-scroll-proportion="-1.3333334" vertical-offset="0" max-vertical-offset="27642">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json files/p2_message_exchanged.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="414" column="22" selection-start="23233" selection-end="23238" vertical-scroll-proportion="-2.9215686" vertical-offset="6889" max-vertical-offset="8908">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json files/no name in v2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1135" column="32" selection-start="63128" selection-end="63134" vertical-scroll-proportion="-3.4509804" vertical-offset="19119" max-vertical-offset="22406" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python33/Lib/urllib/request.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="0" selection-start="4941" selection-end="4941" vertical-scroll-proportion="0.0" vertical-offset="1801" max-vertical-offset="43928" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python33/Lib/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="383" column="0" selection-start="13205" selection-end="13205" vertical-scroll-proportion="0.33333334" vertical-offset="6170" max-vertical-offset="20570" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json files/no friends top card.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="217" column="29" selection-start="7717" selection-end="7721" vertical-scroll-proportion="0.0" vertical-offset="3513" max-vertical-offset="19346">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json files/no name in v2 top card instead try.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="410" column="15" selection-start="21290" selection-end="21290" vertical-scroll-proportion="0.0" vertical-offset="6509" max-vertical-offset="7140">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json files/155884189-profile_v2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="549" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="396" column="47" selection-start="13470" selection-end="13470" vertical-scroll-proportion="0.0" vertical-offset="3693" max-vertical-offset="7140">
+        <state line="407" column="18" selection-start="13763" selection-end="13763" vertical-scroll-proportion="0.0" vertical-offset="6919" max-vertical-offset="7922">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/json files/no name in v2 2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="393" column="12" selection-start="16155" selection-end="16155" vertical-scroll-proportion="0.0" vertical-offset="6498" max-vertical-offset="8602">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="35" selection-start="609" selection-end="609" vertical-scroll-proportion="0.6788194" vertical-offset="68" max-vertical-offset="1003">
+        <state line="74" column="22" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.65675056" vertical-offset="684" max-vertical-offset="1581">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
