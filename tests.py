@@ -25,8 +25,9 @@ class TestShitWorks(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        print('Creating Crawler')
         cls.crawler = Crawler()
-        pass
+
 
     def test_login(self):
         c = MockCrawler()
@@ -85,6 +86,21 @@ class TestShitWorks(unittest.TestCase):
 
     def test_people_with_no_first_and_last_name(self):
         pass
+
+    def test_people_lists_not_same(self):
+        p1 = self.crawler.people_also_viewed[0]
+        p2 = self.crawler.people_also_viewed[1]
+        p1_clone = Profile(p1.url)
+        p1._load_html()
+
+        assert len(p1.people_also_viewed) == 10
+        assert p2.people_also_viewed == []
+        assert p1_clone.people_also_viewed == []
+
+        p2._load_html()
+        p1_clone._load_html()
+        assert set(p1.people_also_viewed) != set(p2.people_also_viewed)
+        self.assertListEqual(p1.people_also_viewed, p1_clone.people_also_viewed)
 
 
 if __name__ == '__main__':

@@ -24,6 +24,7 @@ class Crawler(object):
     opener = None
     _cookies_loaded = False
 
+
     @staticmethod
     def _create_opener():
         if Crawler.opener is not None:
@@ -71,14 +72,18 @@ class Crawler(object):
         self._people_you_may_know_ids = []
         self._people_you_may_know_urls = []
         self.people_you_may_know = []
+        self._people_ids = []
+        self._people_urls = []
+        self.people_also_viewed = []
+
         self.counter = 0  # Simple counter for debug purpose
 
-
+        self.root_profile = None
 
 
         #res = self._login()
         #if res is None:
-        #    res = request.urlopen('http://www.linkedin.com/nhome/')
+        #res = request.urlopen('http://www.linkedin.com/nhome/')
 
         res = request.urlopen('http://www.linkedin.com/profile/view?id={}'.format(Crawler.root_id))
         html = res.read()
@@ -88,13 +93,19 @@ class Crawler(object):
         profile_v2 = profile_v2.contents[0].replace(r'\u002d', '-')
         profile_v2 = json.loads(profile_v2)
 
-        profiles = profile_v2['content']['Discovery']['discovery']['people']
-        for i in range(0, len(profiles)):
-            profile = Profile(url = profiles[i]['link_profile'], profile_id=profiles[i]['memberID'])
-            self._people_you_may_know_ids.append(profile.profile_id)
-            self._people_you_may_know_urls.append(profile.url)
-            self.people_you_may_know.append(profile)
+        #profiles = profile_v2['content']['Discovery']['discovery']['people']
+        #for i in range(0, len(profiles)):
+        #    profile = Profile(url = profiles[i]['link_profile'], profile_id=profiles[i]['memberID'])
+        #    self._people_you_may_know_ids.append(profile.profile_id)
+        #    self._people_you_may_know_urls.append(profile.url)
+        #    self.people_you_may_know.append(profile)
 
+        profiles = profile_v2['content']['browse_map']['results']
+        for i in range(0, len(profiles)):
+            profile = Profile(url=profiles[i]['pview'], profile_id=profiles[i]['memberID'])
+            self._people_ids.append(profile.profile_id)
+            self._people_urls.append(profile.url)
+            self.people_also_viewed.append(profile)
 
 
     def _is_logged_in(self):
@@ -285,14 +296,14 @@ class Profile(object):
         self.is_stub = False
 
 
-
-    def __init__(self, url='', profile_id=0, thumb_src='', image_src='', name='', people_also_viewed=[]):
+    def __init__(self, url='', profile_id=0, thumb_src='', image_src='', name=''):
 
         self.profile_id = profile_id
         self.thumb_src = thumb_src
         self.image_src = image_src
         self.name = name
-        self.people_also_viewed = people_also_viewed
+        self.people_also_viewed = []
+        self.html = None
 
         if self.is_absolute_url(url):
             self.url = url
@@ -304,7 +315,6 @@ class Profile(object):
 
         self.population_database[self.profile_id] = self.url
 
-        self.html = None
 
     def _load_html(self):
 
@@ -427,12 +437,21 @@ class Profile(object):
 
 
     def __str__(self):
-        ret_val = ''
-        if self.name != '':
-            ret_val += self.name
+        return 'Name: {}, Url: {}'.format(self.name, self.url)
 
-        ret_val += ' {}'.format(self.url)
-        return ret_val
+    def __cmp__(self, other):
+        if self.profile_id > other.profile_id:
+            return 1
+        elif self.profile_id < other.profile_id:
+            return -1
+        else:
+            return 0
+
+    def __hash__(self):
+        return self.profile_id
+
+    def __eq__(self, other):
+        return self.profile_id == other.profile_id
 
 
 if __name__ == '__main__':
