@@ -158,7 +158,7 @@ class Crawler(object):
         #ids = [parse_qs(x.query)['id'] for x in links]
         #thumbs =
         # [x.find('img')['data-li-src'] for x in people_also_viewed if x.find('img').attrs.has_key('data-li-src')]
-        #profile = Profile(url, id = id, name = name, link = link)
+
 
         self.jar.save(self.cookie_filename)
 
@@ -174,17 +174,6 @@ class Crawler(object):
             dead.append(x)
         p = root[0]
         p._load_html()
-        newp = None
-        oldp = None
-        #for i in range(0, levels):
-        #    for x in dead:
-        #        print('starting {}'.format(x.url))
-        #        x._load_html()
-        #        alive.extend(x.people_also_viewed)
-        #
-        #        print('\t {}'.format(x.name))
-        #    dead = list(alive)
-        #    alive = []
 
         for i in range(0, levels):
 
