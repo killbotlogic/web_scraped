@@ -4,6 +4,7 @@ from main import Crawler, Profile
 from unittest.mock import MagicMock
 from unittest.mock import Mock
 import json
+from urllib.parse import urlparse, parse_qs
 
 
 class MockCrawler(Crawler):
@@ -42,32 +43,21 @@ class TestShitWorks(unittest.TestCase):
         self.assertTrue(c._load_cookies())
         self.assertTrue(c._is_logged_in())
 
-    def test_get_people_i_may_know(self):
-        c = Crawler()
-        self.assertEquals(len(c._people_you_may_know_ids), 4)
-        assert len(c._people_you_may_know_urls) == 4
-        self.assertEquals(len(c.people_you_may_know), 4)
-        assert len(Profile.population_database) == 4
-
     def test_init_profile_from_url(self):
 
         p = Profile(url='/profile/view?id=319955720')
         self.assertEquals(p.url, 'https://www.linkedin.com/profile/view?id=319955720')
         self.assertEquals(p.profile_id, 319955720)
 
-    def test_crawler_people_known_urls(self):
-        link = self.crawler._people_you_may_know_urls[0]
-        assert 'http' in self.crawler.people_you_may_know[0].url
 
-        assert 'http' in link
 
 
     def test_people_also_viewed(self):
-        link = self.crawler._people_you_may_know_urls[0]
+        link = self.crawler.root_profile.people_also_viewed[0].url
 
         p = Profile(link)
         p._load_html()
-        assert len(p.people_also_viewed) == 10
+        assert len(p.people_also_viewed) >= 1
 
 
     def test_harvesting(self):
@@ -75,25 +65,28 @@ class TestShitWorks(unittest.TestCase):
         #p = self.crawler.people_you_may_know[0].people_also_viewed[0].people_also_viewed[0].people_also_viewed[0]
 
     def test_dump_stuff(self):
-        p = self.crawler.people_you_may_know[0]
+        p = self.crawler.root_profile.people_also_viewed[0]
         p._load_html()
         Profile.dump_stuff('{}.json'.format(p.profile_id), json.dumps(p.top_card))
 
     def test_profile_with_no_people_also_viewed(self):
-        p = Profile(url='http://www.linkedin.com/profile/view?id=30936168&authType=name&authToken=OusF')
+        p = MockProfile(url='http://www.linkedin.com/profile/view?id=30936168&authType=name&authToken=OusF')
         p._load_html()
         self.assertListEqual(p.people_also_viewed, [])
 
     def test_people_with_no_first_and_last_name(self):
-        pass
+        p = MockProfile(url='https://www.linkedin.com/profile/view?id=304000038&authType=name&authToken=nI2a')
+        p._load_html()
+        assert p.first_name is None
+        assert p.last_name is None
+
 
     def test_people_lists_not_same(self):
-        p1 = self.crawler.people_also_viewed[0]
-        p2 = self.crawler.people_also_viewed[1]
-        p1_clone = Profile(p1.url)
-        p1._load_html()
+        p1 = self.crawler.root_profile
+        p2 = self.crawler.root_profile.people_also_viewed[1]
+        p1_clone = MockProfile(p1.url)
 
-        assert len(p1.people_also_viewed) == 10
+        assert len(p1.people_also_viewed) >= 1
         assert p2.people_also_viewed == []
         assert p1_clone.people_also_viewed == []
 
