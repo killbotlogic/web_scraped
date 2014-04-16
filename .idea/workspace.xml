@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04598644-61a0-4b28-b4ec-0c64be34fd9c" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\155884189-profile_v2.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\155884189-top_card.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\303208269-top_card.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\303208269.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\304000038-top_card.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\319955720-profile_v2.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\319955720-top_card.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\dump.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\my new dump.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\no friends top card.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\no name in v2 2.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\no name in v2 top card instead try.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\no name in v2.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\only top card content.json" afterPath="" />
-      <change type="DELETED" beforePath="E:\Users\Andrew\PycharmProjects\web_scraper\json files\p2_message_exchanged.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cookies.txt" afterPath="$PROJECT_DIR$/cookies.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+    <list default="true" id="04598644-61a0-4b28-b4ec-0c64be34fd9c" name="Default" comment="some commit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="web_scraper.iws" />
@@ -64,7 +46,7 @@
       <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="413" column="54" selection-start="14806" selection-end="14806" vertical-scroll-proportion="0.47362384" vertical-offset="6608" max-vertical-offset="7616">
+            <state line="411" column="0" selection-start="14692" selection-end="14692" vertical-scroll-proportion="0.22965117" vertical-offset="6829" max-vertical-offset="7633">
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -274,7 +256,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="options.lastSelected" value="vcs.Git" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -670,7 +652,11 @@
       <created>1394362641787</created>
       <updated>1394362641787</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="some commit">
+      <created>1397689355806</created>
+      <updated>1397689355806</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -697,22 +683,22 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20489977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20489977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18089648" sideWeight="0.6703786" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18089648" sideWeight="0.7951002" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3674833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31069043" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20489977" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30957684" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -830,7 +816,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="413" column="54" selection-start="14806" selection-end="14806" vertical-scroll-proportion="0.47362384" vertical-offset="6608" max-vertical-offset="7616">
+        <state line="411" column="0" selection-start="14692" selection-end="14692" vertical-scroll-proportion="0.22965117" vertical-offset="6829" max-vertical-offset="7633">
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
