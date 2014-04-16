@@ -164,6 +164,11 @@ class Crawler(object):
 
         return response
 
+
+    def harvest(self, num=-1):
+
+        pass
+
     def run(self, levels):
 
         root = self.root_profile.people_also_viewed
@@ -250,7 +255,7 @@ class Profile(object):
                 print('\t no photo for {}'.format(self.url))
 
         else:
-            raise Exception("What the fuck are you doing here? How could there be more json files?")
+            raise Exception("What the fuck are you doing here? How could there be more debug_files?")
 
         self.name = self.json_profile_v1['content']['BasicInfo']['basic_info']['fullname']
         self.profile_id = self.json_profile_v1['content']['BasicInfo']['basic_info']['memberID']
@@ -394,7 +399,7 @@ class Profile(object):
 
         directory = os.getcwd() #os.path.dirname(filename)
 
-        with open(directory + '\\json files\\' + filename, "w+") as text_file:
+        with open(directory + '\\debug_files\\' + filename, "w+") as text_file:
             text_file.write(txt)
 
             #if not os.path.exists(dir):
