@@ -11,11 +11,11 @@ from urllib import error
 import json
 import copy
 import random
-
+import queue
 
 class Crawler(object):
     everybody = {}
-    cookie_filename = "cookies.txt"
+    cookie_filename = "user_cookies.txt"
     username = 'vanessa.kennedy.mccarthy@gmail.com'
     password = 'Password29'
 
@@ -81,58 +81,14 @@ class Crawler(object):
         self.root_profile = Profile('http://www.linkedin.com/profile/view?id={}'.format(Crawler.root_id))
         self.root_profile._load_html()
 
-        #res = self._login()
-        #if res is None:
-        #res = request.urlopen('http://www.linkedin.com/nhome/')
-
-        #res = request.urlopen('http://www.linkedin.com/profile/view?id={}'.format(Crawler.root_id))
-        #html = res.read()
-        #soup = BeautifulSoup(html)
-
-        #profile_v2 = soup.find_all('code', attrs={'id': 'profile_v2_guided_edit_promo-content'})[0]
-        #profile_v2 = profile_v2.contents[0].replace(r'\u002d', '-')
-        #profile_v2 = json.loads(profile_v2)
-
-        #profiles = profile_v2['content']['Discovery']['discovery']['people']
-        #for i in range(0, len(profiles)):
-        #    profile = Profile(url = profiles[i]['link_profile'], profile_id=profiles[i]['memberID'])
-        #    self._people_you_may_know_ids.append(profile.profile_id)
-        #    self._people_you_may_know_urls.append(profile.url)
-        #    self.people_you_may_know.append(profile)
-
-        #profiles = profile_v2['content']['browse_map']['results']
-        #for i in range(0, len(profiles)):
-        #    profile = Profile(url=profiles[i]['pview'], profile_id=profiles[i]['memberID'])
-        #    self._people_ids.append(profile.profile_id)
-        #    self._people_urls.append(profile.url)
-        #    self.people_also_viewed.append(profile)
-
         self.people_also_viewed = self.root_profile.people_also_viewed
 
 
     def _is_logged_in(self):
-        res = request.urlopen("http://www.linkedin.com/profile/view?id=319955720")
-        if res.geturl() == "http://www.linkedin.com/profile/view?id=319955720":
+        res = request.urlopen("https://www.linkedin.com/profile/view?id=319955720")
+        if res.geturl() == "https://www.linkedin.com/profile/view?id=319955720":
             return True
         return False
-
-    def login_wtf(self):
-        res = request.urlopen("https://www.linkedin.com/")
-
-        html_code = res.read()
-        soup = BeautifulSoup(html_code)
-        form = soup.find(id='login')
-        usernameinput = form.select('input[name=session_key]')[0]
-        passwordinput = form.select('input[name=session_password]')[0]
-        usernameinput['value'] = 'vanessa.kennedy.mccarthy@gmail.com'
-        passwordinput['value'] = 'Password29'
-
-        payload = dict((i['name'], i['value']) for i in form.find_all('input'))
-        data = parse.urlencode(payload)
-        #res.url or something
-        loginrequest = res.Request(form['action'], data)
-        loginresponse = res.urlopen(loginrequest)
-        here = loginresponse.read()
 
     def _login(self):
         """
@@ -141,65 +97,47 @@ class Crawler(object):
         if self._is_logged_in():
             return
 
+        html = request.urlopen("https://www.linkedin.com/uas/login").read()
+        soup = BeautifulSoup(html)
+        csrf = soup.find(id="loginCsrfParam-login")['value']
+
         login_data = parse.urlencode({
             'session_key': self.username,
             'session_password': self.password,
+            'loginCsrfParam': csrf
         })
 
-        url = "https://www.linkedin.com/uas/login-submit"
         data = login_data.encode()
 
-        response = request.urlopen(url, data)
-
-        #people_also_viewed = soup('a', href=re.compile('^/profile/view'))
-        #people_also_viewed = soup.select('.with-photo > a')
-        #names = [x.find('img')['alt'] for x in people_also_viewed]
-        #links = [urlparse(x['href']) for x in people_also_viewed]
-        #ids = [parse_qs(x.query)['id'] for x in links]
-        #thumbs =
-        # [x.find('img')['data-li-src'] for x in people_also_viewed if x.find('img').attrs.has_key('data-li-src')]
-
+        response = request.urlopen("https://www.linkedin.com/uas/login-submit", data)
 
         self.jar.save(self.cookie_filename)
 
         return response
 
-
     def harvest(self, num=-1):
 
         pass
 
-    def run(self, levels):
+    def run(self, num):
 
-        root = self.root_profile.people_also_viewed
-
-        alive = []
-        dead = []
-        for x in root:
-            dead.append(x)
-        p = root[0]
+        scraping = set()
+        p = self.root_profile
         p._load_html()
 
-        for i in range(0, levels):
+        for i in range(0, num):
 
             print('starting {}'.format(p.url))
-
             print('\t {}'.format(p.name))
+            for random_dude in p.people_also_viewed:
+                if random_dude.profile_id in Profile.population_database:
+                    continue
+                if random_dude in scraping:
+                    continue
+                scraping.add(random_dude)
 
-            who = random.randint(0, len(p.people_also_viewed) - 1)
-            new_guy = p.people_also_viewed[who]
-            print('\t considering {}'.format(new_guy.url))
-
-            if new_guy.profile_id not in Profile.population_database:
-                newp = new_guy
-                newp._load_html()
-            else:
-                newp = Profile.population_database[new_guy.profile_id]
-            if len(newp.people_also_viewed) == 0:
-                continue
-
-            p = newp
-
+            p = scraping.pop()
+            p._load_html()
 
 class Profile(object):
     population_database = {}
@@ -211,9 +149,9 @@ class Profile(object):
         res = request.urlopen(self.url)
         html = res.read()
 
-        soup = BeautifulSoup(html)
+        self.soup = BeautifulSoup(html)
 
-        jsons = soup.find_all('code')
+        jsons = self.soup.find_all('code')
 
         if len(jsons) == 2:
 
@@ -260,21 +198,6 @@ class Profile(object):
         self.name = self.json_profile_v1['content']['BasicInfo']['basic_info']['fullname']
         self.profile_id = self.json_profile_v1['content']['BasicInfo']['basic_info']['memberID']
 
-
-
-        #try:
-        #    self.first_name = soup.json_profile_v2['content']['Discovery']['discovery']['viewee']['firstName']
-        #    self.last_name = soup.json_profile_v2['content']['Discovery']['discovery']['viewee']['lastName']
-        #except TypeError as e:
-        #    print('Can''t find first name and last name for {}'.format(self.name))
-
-        #try:
-        #    self.picture_src = self.json_profile_v2['content']['in_common']['viewee']['pictureID']
-        #except (TypeError, KeyError) as e:
-        #    print('Can''t find picture for {}'.format(self.name))
-        #
-        #assert self.html != ''
-
         print('\t created ' + self.name)
 
 
@@ -298,8 +221,6 @@ class Profile(object):
         if self.profile_id == 0:
             self.profile_id = int(parse_qs(urlparse(self.url).query)['id'][0])
 
-        self.population_database[self.profile_id] = self.url
-
 
     def _load_html(self):
 
@@ -311,17 +232,25 @@ class Profile(object):
 
         soup = BeautifulSoup(self.html)
 
+        # if (soup.find_all('code').__len__() =)
+
+        cookieDisabled = soup.find_all('div', attrs={'id': 'cookieDisabled'})
+        if len(cookieDisabled) > 0:
+            raise Exception(cookieDisabled[0].text)
+
         self.p2_message = self._get_json(soup, 'p2_message_exchanged')
         self.profile_v2 = self._get_json(soup, 'profile_v2_background')
         self.top_card = self._get_json(soup, 'top_card')
         self.profile_v2_guided_edit_promo = self._get_json(soup, 'profile_v2_guided_edit_promo')
 
-        if self.profile_v2_guided_edit_promo is not None:
-            self.profile_v2 = self.profile_v2_guided_edit_promo
+        # if self.profile_v2_guided_edit_promo is not None:
+        # self.profile_v2 = self.profile_v2_guided_edit_promo
 
         self._load_attributes()
 
-        self._load_people_also_viewed()
+        self._load_profile_links()
+
+        self.population_database[self.profile_id] = self
 
     def _load_attributes(self):
 
@@ -330,17 +259,17 @@ class Profile(object):
             self.last_name = self.p2_message['content']['discovery']['viewee']['lastName']
             return
 
-        if self.profile_v2 is not None:
+        if self.profile_v2_guided_edit_promo is not None:
             try:
-                self.first_name = self.profile_v2['content']['discovery']['viewee']['firstName']
-                self.last_name = self.profile_v2['content']['discovery']['viewee']['lastName']
+                self.first_name = self.profile_v2_guided_edit_promo['content']['discovery']['viewee']['firstName']
+                self.last_name = self.profile_v2_guided_edit_promo['content']['discovery']['viewee']['lastName']
                 return
             except KeyError as e:
                 print(e.__str__)
                 print('Cannot find name for {}'.format(self.url))
-                self.dump_stuff('{}-profile_v2.json'.format(self.profile_id), json.dumps(self.profile_v2))
-                self.dump_stuff('{}-top_card.json'.format(self.profile_id), json.dumps(self.top_card))
-                self.name = self.profile_v2['content']['BasicInfo']['basic_info']['fullname']
+                self.dump_stuff('{}-profile_v2_guided_edit_promo.json'.format(self.profile_id),
+                                json.dumps(self.profile_v2_guided_edit_promo))
+                self.name = self.profile_v2_guided_edit_promo['content']['BasicInfo']['basic_info']['fullname']
                 return
 
         if self.top_card is not None:
@@ -355,6 +284,19 @@ class Profile(object):
                 self.name = self.top_card['content']['BasicInfo']['basic_info']['fullname']
                 return
 
+        if self.profile_v2 is not None:
+            try:
+                self.first_name = self.profile_v2['content']['discovery']['viewee']['firstName']
+                self.last_name = self.profile_v2['content']['discovery']['viewee']['lastName']
+                return
+            except KeyError as e:
+                print(e.__str__)
+                print('Cannot find name for {}'.format(self.url))
+                self.dump_stuff('{}-profile_v2.json'.format(self.profile_id), json.dumps(self.profile_v2))
+                self.name = self.profile_v2['content']['BasicInfo']['basic_info']['fullname']
+                return
+
+
     @staticmethod
     def _get_json(soup, name):
         dump = soup.find_all('code', attrs={'id': '{}-content'.format(name)})
@@ -365,26 +307,29 @@ class Profile(object):
         return json.loads(dump)
 
 
-    def _load_people_also_viewed(self):
+    def _load_profile_links(self):
         if self.has_people_also_viewed is not None:
             return
 
-        try:
-            if self.p2_message is not None:
-                profiles = self.p2_message['content']['browse_map']['results']
+        # try:
+        # if self.p2_message is not None:
+        #         profiles = self.p2_message['content']['browse_map']['results']
+        #     elif self.profile_v2_guided_edit_promo is not None:
+        #         profiles = self.profile_v2_guided_edit_promo['content']['browse_map']['results']
+        #     elif self.profile_v2 is not None:
+        #         profiles = self.profile_v2['content']['browse_map']['results']
+        #     elif self.top_card is not None:
+        #         profiles = self.top_card['content']['browse_map']['results']
+        #     else:
+        #         # raise Exception('what the fuck are you doing here')
+        #         print('{} has no fucking json to parse'.format(self.name))
+        #         profiles = []
+        # except KeyError as e:
+        #     print('{} has no people also viewed'.format(self.name))
+        #     self.has_people_also_viewed = False
+        #     return
 
-            elif self.profile_v2 is not None:
-                profiles = self.profile_v2['content']['browse_map']['results']
-
-            elif self.top_card is not None:
-                profiles = self.top_card['content']['browse_map']['results']
-
-            else:
-                raise Exception('what the fuck are you doing here')
-        except KeyError as e:
-            print('{} has no people also viewed'.format(self.name))
-            self.has_people_also_viewed = False
-            return
+        profiles = []
 
         for i in range(0, len(profiles)):
             url = profiles[i]['pview']
@@ -399,7 +344,7 @@ class Profile(object):
 
         directory = os.getcwd() #os.path.dirname(filename)
 
-        with open(directory + '\\debug_files\\' + filename, "w+") as text_file:
+        with open(directory + '\\debug_files\\' + filename, "w+", encoding='utf-8') as text_file:
             text_file.write(txt)
 
             #if not os.path.exists(dir):

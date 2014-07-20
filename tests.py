@@ -12,7 +12,6 @@ class MockCrawler(Crawler):
         self._create_opener()
         self._load_cookies()
 
-
 class MockProfile(Profile):
     pass
 
@@ -37,7 +36,8 @@ class TestShitWorks(unittest.TestCase):
         self.assertFalse(c._is_logged_in())
         c._login()
         self.assertTrue(c._is_logged_in())
-#"wtf"
+
+    # "wtf"
     def test_still_logged_in(self):
         c = MockCrawler()
         self.assertTrue(c._load_cookies())
@@ -59,6 +59,10 @@ class TestShitWorks(unittest.TestCase):
         p._load_html()
         assert len(p.people_also_viewed) >= 1
 
+
+    def test_parse_premium_user(self):
+        p = Profile(url='/profile/view?id=1040844&authType=name&authToken=_P15')
+        p._load_html()
 
     def test_harvesting(self):
         self.crawler.run(1000)
