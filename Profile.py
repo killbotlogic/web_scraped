@@ -12,7 +12,7 @@ import json
 import copy
 import random
 import queue
-
+import re
 
 class Profile(object):
     population_database = {}
@@ -21,7 +21,7 @@ class Profile(object):
 
         print('started creation of ' + self.url)
 
-        jsons = self.soup.find_all('code')
+        jsons = self._soup.find_all('code')
 
         if len(jsons) == 2:
 
@@ -70,44 +70,43 @@ class Profile(object):
 
         print('\t created ' + self.name)
 
-
     def __init__(self, url='', profile_id=0, thumb_src='', image_src='', name=''):
 
         self.profile_id = profile_id
         self.thumb_src = thumb_src
         self.image_src = image_src
         self.name = name
-        self.related_profile_ids = {}
-        self.related_profiles = {}
-        self.has_people_also_viewed = None
-        self.html = None
-        self.first_name = None
-        self.last_name = None
 
-        if Profile.is_absolute_url(url):
+        self.related_profiles = set()
+        # self.first_name = None
+        # self.last_name = None
+
+        if Profile._is_absolute_url(url):
             self.url = url
         else:
-            self.url = Profile.get_absolute_url(url)
+            self.url = Profile._get_absolute_url(url)
 
         if profile_id == 0:
-            self.profile_id = Profile.get_user_id(self.url)
+            self.profile_id = Profile._get_user_id(self.url)
 
         res = request.urlopen(self.url)
-        html = res.read()
-        self.soup = BeautifulSoup(html)
+        self._html = res.read()
+        self._soup = BeautifulSoup(self._html)
 
         if name == '':
-            self.name = Profile.get_full_name(self.soup)
+            self.name = Profile._get_full_name(self._soup)
+
+        self.related_profile_links = Profile._get_related_profile_links(self._soup)
 
     def _load_html(self):
 
-        if self.html is not None:
+        if self._html is not None:
             return
 
         res = request.urlopen(self.url)
-        self.html = res.read()
+        self._html = res.read()
 
-        soup = BeautifulSoup(self.html)
+        soup = BeautifulSoup(self._html)
 
         # if (soup.find_all('code').__len__() =)
 
@@ -225,27 +224,51 @@ class Profile(object):
             text_file.write(txt)
 
     @staticmethod
-    def get_absolute_url(url):
+    def _get_absolute_url(url):
         return 'https://www.linkedin.com' + url
 
     @staticmethod
-    def get_full_size_picture_url(url):
+    def _get_full_size_picture_url(url):
         return 'http://m.c.lnkd.licdn.com/media' + url
 
     @staticmethod
-    def is_absolute_url(url):
+    def _is_absolute_url(url):
         return bool(urlparse(url).scheme)
 
     @staticmethod
-    def get_user_id(url):
-        return int(parse_qs(urlparse(url).query)['id'][0])
+    def _get_user_id(url_str):
+        query = parse_qs(urlparse(url_str).query)
+        if 'id' in query:
+            return int(query['id'][0])
+        else:
+            return None
 
     @staticmethod
-    def get_full_name(soup):
+    def _get_full_name(soup):
         title = soup.find('title').string
         title = title.split('|')[0]
         title = title.strip()
         return title
+
+    @staticmethod
+    def _get_related_profile_links(html):
+
+        related_profile_links = {}
+        links = re.findall('https://www.linkedin.com/profile/view[^"]*', str(html))
+
+        for link in links:
+            url_query = parse_qs(urlparse(link).query)
+            if 'authToken' in url_query and 'id' in url_query:
+                related_profile_links[url_query['id'][0]] = link
+        return related_profile_links
+
+    # @staticmethod
+    # def _get_related_profile_ids(links):
+    # related_profile_ids = set()
+    #     for link in links:
+    #         related_profile_ids.add(Profile._get_user_id(link))
+    #     return related_profile_ids
+
 
     def __str__(self):
         return 'Name: {}, Url: {}'.format(self.name, self.url)
@@ -263,5 +286,7 @@ class Profile(object):
 
     def __eq__(self, other):
         return self.profile_id == other.profile_id
+
+
 
 
