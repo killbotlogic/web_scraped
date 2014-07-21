@@ -28,7 +28,9 @@ class Crawler(object):
     root_profile = None
 
     _ids_links = {}
-    _ids_visited = {}
+    _ids = set()
+    _ids_visited = set()
+    _ids_not_visited = set()
     _ids_profiles = {}
 
     @staticmethod
