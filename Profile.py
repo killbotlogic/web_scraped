@@ -15,7 +15,8 @@ import queue
 import re
 
 class Profile(object):
-    population_database = {}
+    global_links = {}
+    global_profiles = {}
 
     def real_init(self):
 
@@ -72,12 +73,13 @@ class Profile(object):
 
     def __init__(self, url='', profile_id=0, thumb_src='', image_src='', name=''):
 
+        print('parsing {}'.format(url))
+
         self.profile_id = profile_id
         self.thumb_src = thumb_src
         self.image_src = image_src
         self.name = name
 
-        self.related_profiles = set()
         # self.first_name = None
         # self.last_name = None
 
@@ -97,6 +99,8 @@ class Profile(object):
             self.name = Profile._get_full_name(self._soup)
 
         self.related_profile_links = Profile._get_related_profile_links(self._soup)
+
+        self.related_profiles = Profile._get_related_profiles(self._soup)
 
     def _load_html(self):
 
@@ -260,7 +264,28 @@ class Profile(object):
             url_query = parse_qs(urlparse(link).query)
             if 'authToken' in url_query and 'id' in url_query:
                 related_profile_links[url_query['id'][0]] = link
+                Profile.global_links[url_query['id'][0]] = link
+
         return related_profile_links
+
+    @staticmethod
+    def _get_related_profiles(html):
+        related_profiles = {}
+
+        links = re.findall('https://www.linkedin.com/profile/view[^"]*', str(html))
+        for link in links:
+            url_query = parse_qs(urlparse(link).query)
+            if 'authToken' in url_query and 'id' in url_query:
+                user_id = url_query['id'][0]
+
+                if user_id in Profile.global_profiles.keys():
+                    related_profiles[user_id] = Profile.global_profiles[user_id]
+                else:
+                    profile = Profile(url=link)
+                    related_profiles[user_id] = profile
+                    Profile.global_profiles[user_id] = profile
+
+        return related_profiles
 
     # @staticmethod
     # def _get_related_profile_ids(links):
