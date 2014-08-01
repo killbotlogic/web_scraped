@@ -1,7 +1,8 @@
 import random
 import unittest
 import uuid
-from main import Crawler, Profile
+from Crawler import Crawler
+from Profile import Profile
 from unittest.mock import MagicMock
 from unittest.mock import Mock
 import json

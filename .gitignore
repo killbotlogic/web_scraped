@@ -2,9 +2,16 @@
 ## Debug files
 #################
 
-debug_files/
+debug_files/*
 
 *cookies.txt
+
+#################
+## PyCharm
+#################
+
+.idea/
+
 #################
 ## Eclipse
 #################
