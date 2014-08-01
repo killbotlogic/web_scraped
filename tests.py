@@ -8,12 +8,11 @@ from unittest.mock import MagicMock
 from unittest.mock import Mock
 import json
 from urllib.parse import urlparse, parse_qs
-
+import re
 
 class MockCrawler(Crawler):
     def __init__(self):
-        self._create_opener()
-        self._load_cookies()
+        pass
 
 class MockProfile(Profile):
     def __init__(self):
@@ -28,8 +27,11 @@ class TestShitWorks(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # print('Creating Crawler')
-        # cls.crawler = Crawler()
+        print('Creating Crawler')
+        cls.crawler = Crawler()
+
+        # Crawler._create_opener()
+        # Crawler._load_cookies()
         pass
 
 
@@ -90,27 +92,38 @@ class TestShitWorks(unittest.TestCase):
         assert p.last_name is None
 
 
-    def test_extract_related_profile_ids_from_html(self):
-        res = request.urlopen(
-            'https://www.linkedin.com/profile/view?id=1535870&authType=name&authToken=tDG2&offset=5&trk=prof-sb-pdm-similar-photo')
-        self.html = res.read()
+    def test_extract_related_profile_ids_and_links(self):
+        # res = request.urlopen(
+        # 'https://www.linkedin.com/profile/view?id=1535870&authType=name&authToken=tDG2&offset=5&trk=prof-sb-pdm-similar-photo')
+        # html = res.read()
+        #
+        # soup = BeautifulSoup(html)
+        # ids = Profile._get_related_profile_ids(soup)
 
-        soup = BeautifulSoup(self.html)
-        ids = Profile.get_related_profile_ids(soup)
+        profile = Profile(
+            url='https://www.linkedin.com/profile/view?id=1535870&authType=name&authToken=tDG2&offset=5&trk=prof-sb-pdm-similar-photo')
+        Profile.dump_stuff('here.html', str(profile._soup))
+        assert 732590 in profile.related_profile_links.keys()
+        assert 90584941 in profile.related_profile_links.keys()
+        assert 20390197 in profile.related_profile_links.keys()
 
-        assert 732590 in ids
-        assert 90584941 in ids
-        assert 20390197 in ids
+        assert profile.related_profile_links[732590].startswith('https://www.linkedin.com/profile/view?id=732590')
+        assert profile.related_profile_links[90584941].startswith('https://www.linkedin.com/profile/view?id=90584941')
+        assert profile.related_profile_links[20390197].startswith('https://www.linkedin.com/profile/view?id=20390197')
 
-    # make sure ya got an auth token in the url
-    
+        # make sure ya got an auth token in the url
+        for link in profile.related_profile_links.values():
+            query = parse_qs(urlparse(link).query)
+            assert 'authToken' in query
+
+
     def test_extract_full_name_from_html(self):
         res = request.urlopen(
             'https://www.linkedin.com/profile/view?id=1535870&authType=name&authToken=tDG2&offset=5&trk=prof-sb-pdm-similar-photo')
         self.html = res.read()
 
         soup = BeautifulSoup(self.html)
-        self.assertEqual(Profile.get_full_name(soup), 'Patrick Armitage')
+        self.assertEqual(Profile._get_full_name(soup), 'Patrick Armitage')
 
 
     def test_extract_last_name_from_html(self):
@@ -157,17 +170,17 @@ class TestShitWorks(unittest.TestCase):
         """
         p = MockProfile()
 
-        assert p.get_user_id(
+        assert p._get_user_id(
             'https://www.linkedin.com/profile/view?id=106043148&authType=name&authToken=oJ51&offset=3&trk=prof-sb-pdm-similar-name') == 106043148
-        assert p.get_user_id(
+        assert p._get_user_id(
             'https://www.linkedin.com/profile/view?id=34207573&authType=name&authToken=lTP0&offset=2&trk=prof-sb-pdm-similar-photo') == 34207573
-        assert p.get_user_id(
+        assert p._get_user_id(
             'https://www.linkedin.com/profile/view?id=106043148&authType=name&authToken=oJ51&offset=3&trk=prof-sb-pdm-similar-photo') == 106043148
-        assert p.get_user_id(
+        assert p._get_user_id(
             'https://www.linkedin.com/profile/view?id=31189957&authType=name&authToken=TixA&offset=4&trk=prof-sb-pdm-similar-photo') == 31189957
-        assert p.get_user_id(
+        assert p._get_user_id(
             'https://www.linkedin.com/profile/view?id=74926529&authType=name&authToken=C5wx&offset=5&trk=prof-sb-pdm-similar-photo') == 74926529
-        assert p.get_user_id(
+        assert p._get_user_id(
             'https://www.linkedin.com/profile/view?id=8306764&authType=name&authToken=lp-f&offset=3&trk=prof-sb-pdm-similar-name') == 8306764
 
 

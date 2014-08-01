@@ -27,6 +27,12 @@ class Crawler(object):
     _cookies_loaded = False
     root_profile = None
 
+    _ids_links = {}
+    _ids = set()
+    _ids_visited = set()
+    _ids_not_visited = set()
+    _ids_profiles = {}
+
     @staticmethod
     def _create_opener():
         if Crawler.opener is not None:
@@ -61,10 +67,9 @@ class Crawler(object):
 
 
     def __init__(self):
-        self._create_opener()
-        self._load_cookies()
+        Crawler._create_opener()
+        Crawler._load_cookies()
 
-        self._load_cookies()
         self._login()
 
         self.soup = None  # Beautiful Soup object
@@ -80,9 +85,8 @@ class Crawler(object):
         self.counter = 0  # Simple counter for debug purpose
 
         self.root_profile = Profile('http://www.linkedin.com/profile/view?id={}'.format(Crawler.root_id))
-        self.root_profile._load_html()
+        # self.root_profile._load_html()
 
-        self.connected_profile_ids = self.root_profile.connected_profile_ids
 
 
     def _is_logged_in(self):
